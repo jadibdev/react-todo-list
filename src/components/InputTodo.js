@@ -12,8 +12,15 @@ onChange = e => {
 };
 
 handleSubmit = e => {
-  e.preventDefault();
-  
+ e.preventDefault()
+  if (this.state.title.trim()) {
+    this.props.addTodoProps(this.state.title)
+    this.setState({
+      title: "",
+    })
+  } else {
+    alert("Please write item")
+  }
 }
   render() {
     return (
@@ -23,7 +30,7 @@ handleSubmit = e => {
         onChange={this.onChange} 
         name="title"
         />
-        <button>Submit</button>
+        <button type="submit">Submit</button>
       </form>
     )
   }
